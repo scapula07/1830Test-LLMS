@@ -11,7 +11,7 @@ export default function AllPosts({user}) {
         const getAllPosts=async()=>{
            const res=await  FeedAPI.getPosts(user?.token)
            console.log(res)
-           setPost(res?.data?.posts)
+           setPost(res?.posts)
         }
         getAllPosts()
     },[])

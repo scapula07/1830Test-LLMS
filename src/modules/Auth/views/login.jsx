@@ -33,16 +33,16 @@ export default function LoginView() {
          console.log(res,"ress")
          localStorage.clear();
          localStorage.setItem('user',JSON.stringify({
-                 token:res?.data?.token,
-                 data:res?.data?.user?.user
+                 token:res?.token,
+                 data:res?.user?.user
 
                     }));
-            if(res?.data?.status==="error"){
-              toast.error(res?.data?.response_message)
+            if(res?.status==="error"){
+              toast.error(res?.response_message)
 
              }
             setTimeout(() => {
-            res?.status===200&&res?.data?.response_message==="success"&& navigate('/home');
+            res?.status==="success"&& navigate('/home');
             setLoading(false)
             }, 500);
 
