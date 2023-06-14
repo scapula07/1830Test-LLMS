@@ -8,46 +8,57 @@ import {RiLogoutBoxRLine} from "react-icons/ri"
 export const navs=[
     {
       icon:<AiFillHome />,
-      navName:"Home"
+      navName:"Home",
+      link:"/home"
      },
      {
         icon:<BsPersonFill />,
-        navName:"My Profile"
+        navName:"My Profile",
+        link:"/profile"
      },
      {
         icon:<MdPeople />,
-        navName:"Connections"
+        navName:"Connections",
+        link:"/connections"
       },
       {
         icon:<MdEvent />,
-        navName:"Events"
+        navName:"Events",
+        link:"/events"
       },
       {
         icon:<MdEvent />,
-        navName:"Calander"
+        navName:"Calander",
+        link:"/calander"
        },
        {
         icon:<MdGroups2 />,
-        navName:"Groups"
+        navName:"Groups",
+        link:"/groups"
        },
        {
         icon:<RiShoppingBagFill />,
-        navName:"Marketplace"
+        navName:"Marketplace",
+        link:"/marketplace"
        },
        {
         icon:<FaGraduationCap />,
-        navName:"Courses"
+        navName:"Courses",
+        link:"/courses"
        },
        {
         icon:<MdMessage />,
-        navName:"Messages"
+        navName:"Messages",
+        link:"/messages"
        },
        {
         icon:<AiFillSetting />,
-        navName:"Settings"
+        navName:"Settings",
+        link:"/settings"
        },
        {
         icon:<RiLogoutBoxRLine />,
-        navName:"Logout"
+        navName:"Logout",
+        link:"/logout"
        }
   ]

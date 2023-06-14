@@ -1,5 +1,6 @@
 import React,{useState} from 'react'
 import { useNavigate ,Link} from 'react-router-dom'
+import toast from 'react-hot-toast';
 import Form from '../components/Form'
 import Button from '../components/Button'
 import {MdOutlineEmail,MdLockOutline} from "react-icons/md"
@@ -32,14 +33,20 @@ export default function LoginView() {
                  data:res?.data?.user?.user
 
                     }));
-          setTimeout(() => {
-            res.status===200&& navigate('/home');
-          }, 500);
+            if(res.data.status==="error"){
+              res.data.response_code==400&&toast.error(res.data.response_message)
+
+             }
+            setTimeout(() => {
+            res.status===200&&res?.data?.response_message==="success"&& navigate('/home');
+            }, 500);
 
         
     
         }catch(e){
             console.log(e)
+            if(e.data.response_code ===400) return toast(e.data.response_message)
+         
         }
       
 
@@ -89,20 +96,15 @@ export default function LoginView() {
                     return(
                         <Form 
                          field={field}
-                         
-                        />
+                          />
                         )
-                    })
-
-                    }  
-
-              </div>
+                       }) }  
+            </div>
 
               <div className='flex flex-col space-y-8'>
                     <Button 
                       name={"Login"}
                       action={login}
- 
                     />
 
                     <div className='flex flex-col space-y-6 w-full items-center'>
@@ -113,8 +115,9 @@ export default function LoginView() {
                                   </Link>
                                    
                                 </h5>
+                                <Link to="/forget">
                                 <h5 className='text-sm text-blue-600'>Forgot your password?</h5>
-
+                                </Link>
 
                            </div>
 

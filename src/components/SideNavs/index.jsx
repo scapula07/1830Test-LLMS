@@ -1,5 +1,6 @@
 import React,{useState} from 'react'
 import { navs } from './navs'
+import { Link } from 'react-router-dom'
 
 const Nav=({nav,activeNav,setActive})=>{
    
@@ -22,11 +23,13 @@ export default function SideNavs() {
           <div className='h-full flex flex-col space-y-4'>
             {navs.map((nav)=>{
                 return(
-                   <Nav 
-                      nav={nav} 
-                      activeNav={activeNav} 
-                      setActive={setActive}
-                    />
+                    <Link to={nav?.link}>
+                    <Nav 
+                        nav={nav} 
+                        activeNav={activeNav} 
+                        setActive={setActive}
+                        />
+                    </Link>
                 )
             })}
 

@@ -1,5 +1,5 @@
 import React from 'react'
-
+import { Toaster } from 'react-hot-toast';
 export default function AuthLayout({children}) {
   return (
     <div className="h-screen bg-blue-600 w-full flex justify-center overflow-y-hidden" style={{background:"#0471ef"}}>
@@ -9,7 +9,8 @@ export default function AuthLayout({children}) {
             </div>
             <div className='w-1/2'>
                 {children}
-            </div>
+             </div>
+             <Toaster />
 
         </div>
     </div>

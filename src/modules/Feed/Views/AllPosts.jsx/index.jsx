@@ -2,6 +2,7 @@ import React,{useEffect,useState} from 'react'
 import CreatePost from '../../components/CreatePost'
 import PostCard from '../../components/PostCard'
 import { FeedAPI } from '../../_api'
+import { SyncLoader } from 'react-spinners'
 
 
 export default function AllPosts({user}) {
@@ -28,9 +29,14 @@ export default function AllPosts({user}) {
                         
                         />
                       )
-                })
+                    })
+                 }
+                 {posts?.length===0&&(
+                    <div className='flex items-center justify-center h-1/2 w-full'>
+                    <SyncLoader color="#0471ef"/>
+                    </div>
 
-                }
+                 )}
 
             </div>
 
