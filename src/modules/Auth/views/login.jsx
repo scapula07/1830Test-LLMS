@@ -4,14 +4,18 @@ import toast from 'react-hot-toast';
 import Form from '../components/Form'
 import Button from '../components/Button'
 import {MdOutlineEmail,MdLockOutline} from "react-icons/md"
+
 import {AiOutlineEye} from "react-icons/ai"
 import { AuthAPI } from '../_api'
+
 import axios from 'axios'
 
 export default function LoginView() {
 
     const [email,setEmail]=useState("")
     const [password,setPassword]=useState("")
+    const [loading, setLoading]=useState(false)
+   
    
 
   
@@ -20,6 +24,7 @@ export default function LoginView() {
   
 
     const login=async ()=>{
+        setLoading(true)
         const loginDetails={
             university_email:email,
             password
@@ -39,11 +44,13 @@ export default function LoginView() {
              }
             setTimeout(() => {
             res.status===200&&res?.data?.response_message==="success"&& navigate('/home');
+            setLoading(false)
             }, 500);
 
         
     
         }catch(e){
+            setLoading(false)
             console.log(e)
             if(e.data.response_code ===400) return toast(e.data.response_message)
          
@@ -105,12 +112,13 @@ export default function LoginView() {
                     <Button 
                       name={"Login"}
                       action={login}
+                      loading={loading}
                     />
 
                     <div className='flex flex-col space-y-6 w-full items-center'>
                          <div className='flex flex-col space-y-2 items-center'>
                                 <h5 className='text-slate-500 text-sm font-semibold'>Don't have an account?
-                                  <Link to="/">
+                                  <Link to="/register">
                                     <span className='text-blue-600'>Sign up</span>
                                   </Link>
                                    

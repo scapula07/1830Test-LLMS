@@ -19,8 +19,8 @@ function App() {
               <Home />
           </AuthGuard>
            } />
-        <Route exact path="/"  element={ <Registration />} />
-        <Route exact path="/signin"  element={ <Login />} />
+        <Route exact path="/register"  element={ <Registration />} />
+        <Route exact path="/"  element={ <Login />} />
         <Route exact path="*" element={<NotFound />} />
     </Routes>
     </ErrorBoundary>

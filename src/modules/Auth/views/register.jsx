@@ -4,10 +4,19 @@ import Form from '../components/Form'
 import Button from '../components/Button'
 import {MdOutlineEmail,MdOutlinePerson,MdEvent} from "react-icons/md"
 import {AiOutlineEye} from "react-icons/ai"
+import { AuthAPI } from '../_api'
 
 export default function RegistrationView() {
     const [email,setEmail]=useState("")
     const [password,setPassword]=useState("")
+    const [loading, setLoading]=useState(false)
+
+    const signUp=async ()=>{
+        setLoading(true)
+        setTimeout(() => {
+           setLoading(false)
+         }, 500);
+    }
 
     const fields=[
         {
@@ -72,6 +81,8 @@ export default function RegistrationView() {
               <div className='flex flex-col space-y-4'>
                     <Button 
                       name={"Next"}
+                      action={signUp}
+                      loading={loading}
                      
  
                     />
@@ -79,7 +90,7 @@ export default function RegistrationView() {
                     <div className='flex flex-col space-y-4 w-full items-center'>
                          <div className='flex flex-col  items-center'>
                                 <h5 className='text-slate-500 text-sm font-semibold'>Already have an account?
-                                  <Link to="/signin">
+                                  <Link to="/">
                                     <span className='text-blue-600'>Login</span>
                                   </Link>
                                   

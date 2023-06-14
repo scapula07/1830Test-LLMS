@@ -5,12 +5,20 @@ import {AiOutlineHeart} from "react-icons/ai"
 import {TfiLayoutMediaOverlayAlt} from "react-icons/tfi"
 import {MdSend} from "react-icons/md"
 import SharedPost from '../SharedPost'
+import { FeedAPI } from '../../_api'
 
 export default function PostCard({user,post}) {
     console.log(post,"pp")
-    const time=calculateTimeOfPost(post?.created_at)
-    console.log(time,"time")
+     const [likeCount,setLike]=useState(post?.likes)
+   
     
+    const time=calculateTimeOfPost(post?.created_at)
+
+    const likePost=async()=>{
+        const res= await FeedAPI.like()
+        setLike(likeCount + res)
+     }
+   
 
   return (
      <div className='w-full bg-white flex flex-col space-y-4 rounded-lg py-8 px-8 shadow-lg '>
@@ -79,8 +87,8 @@ export default function PostCard({user,post}) {
                     <h5></h5>
                     <div className='flex items-center space-x-8'>
                         {[
-                            { count:post?.likes,
-                            name:"likes"
+                            { count:likeCount,
+                               name:"likes"
                             },
                             { count:post?.comments,
                             name:"Comments"
@@ -101,6 +109,7 @@ export default function PostCard({user,post}) {
                    <div className='flex items-center space-x-4'>
                             <AiOutlineHeart
                             className='text-lg hover:text-2xl  font-bold text-slate-600 hover:text-slate-800'
+                            onClick={likePost}
                             />
                             <BsFillShareFill 
                                className='text-lg hover:text-2xl  font-bold text-slate-600 hover:text-slate-800'

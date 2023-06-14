@@ -26,7 +26,10 @@ export const FeedAPI = {
  
      },
 
-     register: async function () {}
+     like: async function (uid) {
+         return 1
+         },
+     makePost:async function () {}
   }
   
   const cancelApiObject = defineCancelApiObject(FeedAPI)

@@ -17,7 +17,7 @@ export default function AuthGuard(props) {
          console.log(user?.token,"uuui")
         if (!user || user === 'undefined' || JSON.parse(user)?.token === undefined ) {
             setIsLoggedIn(false);
-            return navigate('/signin');
+            return navigate('/register');
         }
          setIsLoggedIn(true);
          setUser(JSON.parse(user))
