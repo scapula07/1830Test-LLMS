@@ -1,6 +1,7 @@
 import React from 'react'
 import Header from '../components/Header'
 import SideNavs from '../components/SideNavs'
+import Footer from '../components/Footer'
 
 
 export default function Layout({children}) {
@@ -10,13 +11,17 @@ export default function Layout({children}) {
                 <Header />
             </div>
 
-           <div className="flex">
+           <div className="flex" >
                  <SideNavs />
                  <div className='w-full py-20'>
                    {children}
                  </div>
               
             </div>
+            {/* <div className='w-full py-4'>
+               <Footer />
+
+            </div> */}
 
        </div>
     )

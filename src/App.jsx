@@ -7,11 +7,13 @@ import Login from './pages/Login'
 import ErrorBoundary from './ErrorBoundary'
 import NotFound from './pages/ErrorPage/NotFound'
 import AuthGuard from './AuthGuard'
+import {QueryClient,QueryClientProvider} from 'react-query'
 
 function App() {
-
+  const queryClient = new QueryClient()
 
   return (
+    <QueryClientProvider client={queryClient}>
     <ErrorBoundary>
     <Routes>
         <Route exact path="/home"  element={ 
@@ -24,6 +26,7 @@ function App() {
         <Route exact path="*" element={<NotFound />} />
     </Routes>
     </ErrorBoundary>
+    </QueryClientProvider>
    
  
   )

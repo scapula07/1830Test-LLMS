@@ -72,7 +72,7 @@ export default function PostCard({user,post}) {
                     </div>
                       :
                       <SharedPost
-                         sharedPost={post?.shared_by}
+                         sharedPost={post}
                       />
                       
 
