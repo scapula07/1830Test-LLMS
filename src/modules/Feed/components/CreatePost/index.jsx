@@ -1,46 +1,113 @@
-import React from 'react'
+import React,{useState,useRef} from 'react'
 import {TfiLayoutMediaOverlayAlt} from "react-icons/tfi"
+import {AiOutlineClose} from "react-icons/ai"
+import Picker from 'emoji-picker-react';
 import {BsEmojiSmile} from "react-icons/bs"
 import Button from '../Button'
 
 export default function CreatePost({user}) {
+    const [file, setFile] = useState();
+    const [displayEmoji,setEmojiDisplay]=useState(false)
+    const [postText,setText]=useState()
+    const [chosenEmoji, setChosenEmoji] = useState(null);
+
+    const onEmojiClick = (event, emojiObject) => {
+      setChosenEmoji(emojiObject);
+      setEmojiDisplay(false)
+    };
+
+    const hiddenFileInput = useRef()
+
+    const handleClick = event => {
+        // event.preventDefault()
+        hiddenFileInput.current.click()
+    }
+
+      const handleChange = e => {
+          const fileUploaded = e.target.files[0]
+          if (fileUploaded) {
+             setFile({
+                src: URL.createObjectURL(fileUploaded)
+              })
+          }
+         
+      }
+      console.log(chosenEmoji,"emmo")
+
   return (
     <div className='w-full flex flex-col space-y-6 py-6 px-6 rounded-lg shadow-lg bg-white'>
+        
         <div className='flex space-x-3'>
              <img 
                 src={user?.data?.profile_picture}
                 className='h-7 w-7 rounded-full'
                 />  
                 <textarea 
-                    placeholder="What's happening?"
-                    className='border-0 outline-none w-1/2 text-sm text-slate-500 '
+                     placeholder="What's happening?"
+                     className='border-0 outline-none w-1/2 text-sm text-slate-500'
+                     value={postText }
+                     onChange={(e)=>setText(e.target.value)}
                 />
-
-          </div>
-          <div className='flex items-center justify-between'> 
-               <div className='flex items-center space-x-8'>
-                  {[
-                    { icon:<TfiLayoutMediaOverlayAlt />,
-                      name:"Media"
-                    },
-                    { icon:<BsEmojiSmile />,
-                       name:"Feeling"
-                     }
-                  ].map((action)=>{
-                    return(
-                        <div className='flex items-center space-x-3 '>
-                            <h5 className='text-slate-500 hover:text-slate-800 text-lg font-semibold'>{action?.icon}</h5>
-                            <h5 className='text-slate-500 hover:text-slate-800 text-sm font-light'>{action?.name}</h5>
-
+         </div>
+            {file&&(
+                <div className='flex flex-col px-4 py-2 space-y-2'>
+                        <div className='flex justify-end px-8 '>
+                            <button onClick={()=>setFile()}><AiOutlineClose className="text-xl text-slate-800 hover:text-2xl" /></button>
                         </div>
+                        <img 
+                            src={file?.src}
+                            className="w-full h-44"
+                            />
+
+                </div>
                     )
-                  })
-                   }
-               </div>
+                }
+                
+          <div className='flex items-center justify-between'> 
+               <div className='flex items-center space-x-8 relative'>
+                   {displayEmoji&&(
+                    <div className='absolute z-10 top-0'>
+                        <Picker onEmojiClick={onEmojiClick} />
+                    </div>
+                    )}
+
+                    {[
+                        { icon:<TfiLayoutMediaOverlayAlt />,
+                        name:"Media",
+                        click:()=>{
+                            handleClick()
+                        }
+                        },
+                        { icon:<BsEmojiSmile />,
+                          name:"Feeling",
+                          click:()=>{
+                            setEmojiDisplay(true)
+                        }
+                        }
+                    ].map((action)=>{
+                        return(
+                            <div className='flex items-center space-x-3' >
+                                <h5  className='text-lg hover:text-2xl  font-bold text-slate-600 hover:text-slate-800'>{action?.icon}</h5>
+                                <input 
+                                    className='hidden'
+                                    type="file"
+                                    ref={hiddenFileInput}
+                                    onChange={handleChange}
+                                />
+                                <h5  className='text-sm   font-light text-slate-600 hover:text-slate-800' onClick={action.click}>{action?.name}</h5>
+                               
+                               
+
+                            </div>
+                            
+                        )
+                     })
+                     }
+                </div>
 
                <Button 
-                name="Post"
-                cname="bg-blue-600 hover:bg-blue-500 hover:text-slate-700 text-white px-6 py-1 rounded-lg shadow-lg"
+                 name="Post"
+                 cname="bg-blue-600 hover:bg-blue-500 hover:text-slate-700 text-white px-6 py-1 rounded-lg shadow-lg"
                />
 
             

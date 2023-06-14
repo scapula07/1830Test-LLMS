@@ -19,23 +19,23 @@ export const validate =(e,setError)=> {
         })
         } 
         } 
-        if (e.target.name==="password") {
+        // if (e.target.name==="password") {
 
-        console.log("validating password")
-        if (e.target.value.length<=6){
-        console.log("top")
-        setError({
-            password:"Password is too short"
-          })
-        } 
+        // console.log("validating password")
+        // if (e.target.value.length<=6){
+        // console.log("top")
+        // setError({
+        //     password:"Password is too short"
+        //   })
+        // } 
 
-        if (e.target.value.length>=6){
-        console.log("bottom")
-        setError({
-           password:"Password strength is good"
-        })
-        } 
-        } 
+        // if (e.target.value.length>=6){
+        // console.log("bottom")
+        // setError({
+        //    password:"Password strength is good"
+        // })
+        // } 
+        // } 
 
 
 
