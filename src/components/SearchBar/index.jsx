@@ -10,6 +10,7 @@ export default function SearchBar() {
          <input 
             placeholder='Search'
             className='text-white outline-none w-full border-0 bg-blue-600'
+            style={{background:"#0471ef",color:"white"}}
          
           />
 

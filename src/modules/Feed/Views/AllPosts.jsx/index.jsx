@@ -20,7 +20,7 @@ export default function AllPosts({user}) {
                user={user}
              />
             <div className='flex flex-col space-y-6 overflow-y-scroll py-8 h-full'>
-                {posts.map((post)=>{
+                {posts?.map((post)=>{
                      return(
                        <PostCard 
                           user={user}

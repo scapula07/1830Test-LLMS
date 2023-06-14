@@ -3,9 +3,11 @@ import {BsThreeDots,BsDot,BsFillShareFill,BsChat,BsEmojiSmile} from "react-icons
 import {AiOutlineHeart} from "react-icons/ai"
 import {TfiLayoutMediaOverlayAlt} from "react-icons/tfi"
 import {MdSend} from "react-icons/md"
+import SharedPost from '../SharedPost'
 
 export default function PostCard({user,post}) {
     console.log(post,"pp")
+   
   return (
      <div className='w-full bg-white flex flex-col space-y-4 rounded-lg py-8 px-8 shadow-lg '>
          <div className='flex items-center justify-between w-full'>
@@ -43,11 +45,28 @@ export default function PostCard({user,post}) {
 
 
             </div>
-            <div className='flex flex-col'>
-                <img src= {post?.user?.course_of_study}/>
-                <p>
+            <div className='flex flex-col px-8 py-4'>
+               {post?.shared_by ===null?
+                  
+                    <div className='flex flex-col'> 
+                       { post?.image&&
+                         <img src= {post?.image} 
+                           className="h-56 rounded-lg"
+                          />
+                        }
+                        <p className='text-slate-500 text-sm font-semibold px-4'> 
+                         {post?.body} 
+                        </p>
+                    </div>
+                      :
+                      <SharedPost
+                         sharedPost={post?.shared_by}
+                      />
+                      
 
-                </p>
+               }
+              
+               
                     
             </div>
 
@@ -56,13 +75,13 @@ export default function PostCard({user,post}) {
                     <h5></h5>
                     <div className='flex items-center space-x-8'>
                         {[
-                            { count:28,
+                            { count:post?.likes,
                             name:"likes"
                             },
-                            { count:7,
+                            { count:post?.comments,
                             name:"Comments"
                             },
-                            { count:2,
+                            { count:post?.shares,
                                 name:"Reposts"
                             }
                         ].map((prop)=>{

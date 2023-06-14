@@ -7,7 +7,7 @@ import { UserState } from '../../recoil/globalState'
 export default function Header() {
     const user =useRecoilValue(UserState)
   return (
-      <div className='bg-blue-600 h-full w-full'>
+      <div className='bg-blue-600 h-full w-full' style={{background:"#0471ef"}}>
           <div className='flex items-center'>
               <div className='w-1/2'>
                  <SearchBar />

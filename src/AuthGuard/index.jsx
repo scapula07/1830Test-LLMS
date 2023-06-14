@@ -12,9 +12,10 @@ export default function AuthGuard(props) {
     
     const checkUser = () => {
         const user = localStorage.getItem("user");
+        console.log(user,"user")
        
-         console.log(user)
-        if (!user || user === 'undefined') {
+         console.log(user?.token,"uuui")
+        if (!user || user === 'undefined' || JSON.parse(user)?.token === undefined ) {
             setIsLoggedIn(false);
             return navigate('/signin');
         }

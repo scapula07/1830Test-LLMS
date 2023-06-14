@@ -5,8 +5,8 @@ import SideNavs from '../components/SideNavs'
 
 export default function Layout({children}) {
   return (
-      <div className="relative w-screen overflow-x-hidden h-screen overflow-y-hidden">
-            <div className='fixed w-full py-6 px-10 z-20 bg-blue-600'>
+      <div className="relative w-screen overflow-x-hidden h-screen overflow-y-hidden" >
+            <div className='fixed w-full py-6 px-10 z-20 bg-blue-600' style={{background:"#0471ef"}} >
                 <Header />
             </div>
 

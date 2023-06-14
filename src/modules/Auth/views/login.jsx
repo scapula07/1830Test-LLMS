@@ -1,5 +1,5 @@
 import React,{useState} from 'react'
-import { useNavigate } from 'react-router-dom'
+import { useNavigate ,Link} from 'react-router-dom'
 import Form from '../components/Form'
 import Button from '../components/Button'
 import {MdOutlineEmail,MdLockOutline} from "react-icons/md"
@@ -8,9 +8,15 @@ import { AuthAPI } from '../_api'
 import axios from 'axios'
 
 export default function LoginView() {
+
     const [email,setEmail]=useState("")
     const [password,setPassword]=useState("")
+   
+
+  
     const navigate = useNavigate();
+    
+  
 
     const login=async ()=>{
         const loginDetails={
@@ -44,7 +50,7 @@ export default function LoginView() {
 
      const fields=[
         {
-         name:"Email",
+         name:"email",
          label:"Enter your university email",
          sample:"example@kumail.com",
          icon1:<MdOutlineEmail 
@@ -57,7 +63,7 @@ export default function LoginView() {
         
        },
        {
-           name:"Password",
+           name:"password",
            label:"Enter a password",
            sample:"Enter your password",
            icon1:<MdLockOutline 
@@ -83,6 +89,7 @@ export default function LoginView() {
                     return(
                         <Form 
                          field={field}
+                         
                         />
                         )
                     })
@@ -101,7 +108,10 @@ export default function LoginView() {
                     <div className='flex flex-col space-y-6 w-full items-center'>
                          <div className='flex flex-col space-y-2 items-center'>
                                 <h5 className='text-slate-500 text-sm font-semibold'>Don't have an account?
+                                  <Link to="/">
                                     <span className='text-blue-600'>Sign up</span>
+                                  </Link>
+                                   
                                 </h5>
                                 <h5 className='text-sm text-blue-600'>Forgot your password?</h5>
 

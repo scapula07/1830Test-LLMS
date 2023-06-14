@@ -1,8 +1,9 @@
-import React from 'react'
+import React,{useState} from 'react'
+import { validate } from '../../utils/validation'
 
 export default function Form(props) {
-   
-   
+   const [error,setErrors]=useState({})
+   console.log(error)
   return (
       <div className='w-full flex flex-col space-y-3'>
           <label className='text-slate-500 font-semibold'>{props.field?.label}</label>
@@ -15,11 +16,16 @@ export default function Form(props) {
                  name={props?.field?.name}
                  value={props?.field?.value}
                  onChange={(e)=>props?.field?.setInputState(e)}
+                 onKeyPress={(e)=> validate(e,setErrors)}
+                 onKeyDown={(e)=> validate(e,setErrors)}
              
               />
+
              <h5>{props.field?.icon2}</h5>
 
            </div>
+           {error.email?<h5 className='text-sm w-full items-start flex text-red-700 font-light'>{error.email}</h5>:null}
+           {error.password?<h5 className='text-sm w-full items-start flex text-red-700 font-light'>{error.password}</h5>:null}
           
      </div>
   )
