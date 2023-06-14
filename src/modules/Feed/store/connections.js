@@ -8,30 +8,30 @@ export const connections=[
     },
     {
         img:connectImg,
-        name:"Helen Richard"
+        name:"John Doe"
     },
     {
       img:connectImg,
-        name:"Helen Richard"
+        name:"Mary Hather"
      },
      {
         img:connectImg,
-          name:"Helen Richard"
+          name:"Scoffied Richard"
        },
        {
         img:connectImg,
-          name:"Helen Richard"
+          name:"Helen Scoffied"
        },
        {
         img:connectImg,
-          name:"Helen Richard"
+          name:"Helen Doe"
        },
        {
         img:connectImg,
-          name:"Helen Richard"
+          name:"Jake Richard"
        },
        {
         img:connectImg,
-          name:"Helen Richard"
+          name:"Scapula Tim"
        },
       ]

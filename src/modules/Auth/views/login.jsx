@@ -39,7 +39,7 @@ export default function LoginView() {
 
                     }));
             if(res.data.status==="error"){
-              res.data.response_code==400&&toast.error(res.data.response_message)
+              toast.error(res.data.response_message)
 
              }
             setTimeout(() => {

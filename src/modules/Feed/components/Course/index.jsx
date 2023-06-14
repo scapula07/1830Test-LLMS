@@ -1,4 +1,6 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
+
 
 export default function Course({course}) {
   return (
@@ -11,7 +13,10 @@ export default function Course({course}) {
 
           </div>
       </div>  
-     <h5 className='text-blue-600 text-sm underline'>View</h5>
+      <Link to="/course/:key">
+        <h5 className='text-blue-600 text-sm underline'>View</h5>
+      </Link>
+   
          
 
     </div>
