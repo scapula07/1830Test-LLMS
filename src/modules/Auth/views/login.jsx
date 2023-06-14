@@ -8,7 +8,6 @@ import {MdOutlineEmail,MdLockOutline} from "react-icons/md"
 import {AiOutlineEye} from "react-icons/ai"
 import { AuthAPI } from '../_api'
 
-import axios from 'axios'
 
 export default function LoginView() {
 
@@ -38,12 +37,12 @@ export default function LoginView() {
                  data:res?.data?.user?.user
 
                     }));
-            if(res.data.status==="error"){
-              toast.error(res.data.response_message)
+            if(res?.data?.status==="error"){
+              toast.error(res?.data?.response_message)
 
              }
             setTimeout(() => {
-            res.status===200&&res?.data?.response_message==="success"&& navigate('/home');
+            res?.status===200&&res?.data?.response_message==="success"&& navigate('/home');
             setLoading(false)
             }, 500);
 
@@ -52,7 +51,7 @@ export default function LoginView() {
         }catch(e){
             setLoading(false)
             console.log(e)
-            if(e.data.response_code ===400) return toast(e.data.response_message)
+            // if(e?.data?.response_code ===400) return toast(e?.data?.response_message)
          
         }
       
