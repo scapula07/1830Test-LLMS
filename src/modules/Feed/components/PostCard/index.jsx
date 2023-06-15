@@ -123,7 +123,7 @@ export default function PostCard({user,post}) {
                       <div className='flex items-center space-x-6 '>
                          <img 
                             src={user?.data?.profile_picture}
-                           className='w-6 w-6 rounded-full'/>
+                           className='w-5 w-5 rounded-full'/>
                          <textarea 
                             placeholder='Write a comment...'
                             className='outline-none border-0 text-slate-600 w-full text-sm'
