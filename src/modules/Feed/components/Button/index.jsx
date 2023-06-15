@@ -1,6 +1,6 @@
 import React,{useEffect, useState} from 'react'
 
-export default function Button({name,cname}) {
+export default function Button({name,cname,action}) {
 
     function simulateNetworkRequest() {
         return new Promise((resolve) => setTimeout(resolve, 2000));
@@ -15,12 +15,17 @@ export default function Button({name,cname}) {
             });
         }
         }, [isLoading]);
+         
+        const handleClick=()=>{
+            action()
+            setLoading(true)
+        }
         
 
   return (
     <button 
      className={cname}
-     onClick={()=>setLoading(true)}
+     onClick={handleClick}
      
     >
     {isLoading ? 'Loading…' : name}

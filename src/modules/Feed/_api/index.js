@@ -36,8 +36,8 @@ const baseUrl='http://ec2-52-54-242-159.compute-1.amazonaws.com/api'
 
 
 export const FeedAPI = {
-    getPosts: async function (token) {
-      const url=`${baseUrl}/posts/feed?page=1`
+    getPosts: async function (token, pageParam = 1 ) {
+      const url=`${baseUrl}/posts/feed?page=${pageParam}`
     
     try{
     const response= await fetch( url,{
